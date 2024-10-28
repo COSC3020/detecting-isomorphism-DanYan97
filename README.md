@@ -16,6 +16,16 @@ the function and run automatically when you commit through a GitHub action.
 
 What is the worst-case big $\Theta$ time complexity of your algorithm?
 
-For this implementation, it first check if the number of vertices and edges are eaqual, which takes $O(1)$ time complaxity; it then create a talbe for graph2 that store the id for each vertex, which could aviod the repeated search work in the furture, the time complexty is $O(V)$ becuase it need process each vertex; in the main for loop, it need process each vertex, so the time complexity is $O(V)$, it first check if the corresponding vertex in graph 2 exist for the current vertex in graph1, which takes $O(1)$ time complaxity; create two new sets for neighbors comparsion takes $O(1)$, the neighbor comparsion call the helper function, and the helper function takes $O(V)$, beucase it iterates each element in set. So the main for loop takes overall $O(V^2)$ time complaxity.
+To test if two graphs are isomorphic, they must have the same number of edges, vertices and the same edges connectivity.
 
-Combine them together, the time complexity of the worst-case is $O(V)+O(V^2)\in \Theta(V^2)$
+For this implementation:
+
+1. It first check if the number of vertices and edges match between the two graphs, the time complexity is $O(1)$; 
+
+2. To test the connectivity, it first call the function matchNodes to create a node map, in function matchNodes, it calls the groupNodes function to group nodes by edges/degrees, which takes $O(V)$; then, a nested loop is used to map the node, which takes up to $O(V^2)$ time complexity
+
+3. After constructed the node map, the edgesMatch function is called to compare neighbors for node1 and node2 based on the map, which takes $O(V)$
+
+To sum up, the overall time complexity is $O(1)+O(V^2)+O(V)\in\Theta(V^2)$
+
+“I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.” --Doris Yan
